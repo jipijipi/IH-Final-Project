@@ -1,0 +1,41 @@
+columns:
+
+  - title:
+      type: string
+      
+  - author_name:
+      type: string
+
+  - creation_date:
+      type: datetime
+
+  - origin_country:
+      type: categorical
+
+  - display_country:
+      type: categorical
+
+  - display_location:
+      type: string
+
+  - type:
+      type: categorical
+
+  - school:
+      type: categorical
+      categories:
+        - Romanticism
+        - Impressionism
+        - Gothic painting
+        - Baroque
+        - Renaissance
+        - NaN
+
+  - filename:
+      type: string
+
+  - food_words:
+      type: list
+
+  - contains_food:
+      type: boolean
