@@ -1,41 +1,69 @@
-columns:
+ids:
+    source: 'data/wikidata_paintings_ids_final.csv'
+    columns:
+        - item:
+                type: string
+        - author_wikidata:
+                type: string
+        - location_wikidata:
+                type: string
 
-  - title:
-      type: string
-      
-  - author_name:
-      type: string
+paintings:
+    source: 'data/paintings_with_food_mentions.csv'
+    columns:
+        - item:
+                type: string
+        - title:
+                type: string
+        - author_name:
+                type: string
+        - creation_date:
+                type: datetime
+        - type:
+                type: categorical
+        - school:
+                type: categorical
+                categories:
+                    - Romanticism
+                    - Impressionism
+                    - Gothic painting
+                    - Baroque
+                    - Renaissance
+                    - NaN
+        - filename:
+                type: string
+        - food_words:
+                type: list
+        - contains_food:
+                type: boolean
 
-  - creation_date:
-      type: datetime
+authors:
+    source: 'data/wikidata_authors.csv'
+    columns:
+        - author_wikidata:
+                type: string
+        - name:
+                type: string
+        - country:
+                type: string
+        - date_of_birth:
+                type: datetime
+        - gender:
+                type: categorical
+                categories:
+                    - Male
+                    - Female
+                    - NaN
 
-  - origin_country:
-      type: categorical
 
-  - display_country:
-      type: categorical
-
-  - display_location:
-      type: string
-
-  - type:
-      type: categorical
-
-  - school:
-      type: categorical
-      categories:
-        - Romanticism
-        - Impressionism
-        - Gothic painting
-        - Baroque
-        - Renaissance
-        - NaN
-
-  - filename:
-      type: string
-
-  - food_words:
-      type: list
-
-  - contains_food:
-      type: boolean
+locations:
+    source: 'data/wikidata_locations.csv'
+    columns:
+        - location_wikidata:
+                type: string
+        - name:
+                type: string
+        - country:
+                type: categorical
+        - coordinates:
+                type: string
