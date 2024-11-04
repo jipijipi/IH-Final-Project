@@ -1,69 +1,81 @@
 ids:
-    source: 'data/wikidata_paintings_ids_final.csv'
-    columns:
-        - item:
-                type: string
-        - author_wikidata:
-                type: string
-        - location_wikidata:
-                type: string
+        source: "data/wikidata_paintings_ids_final.csv"
+        columns:
+                painting_id:
+                        dtype: object
+                        is_index: true
+                        original_name: "item"
+                        value_type: 'wikidata_url'
+                author_id:
+                        dtype: object
+                        original_name: "author_wikidata"
+                        value_type: 'wikidata_url'
+                location_id:
+                        dtype: object
+                        original_name: "location_wikidata"
+                        value_type: 'wikidata_url'
 
 paintings:
-    source: 'data/paintings_with_food_mentions.csv'
-    columns:
-        - item:
-                type: string
-        - title:
-                type: string
-        - author_name:
-                type: string
-        - creation_date:
-                type: datetime
-        - type:
-                type: categorical
-        - school:
-                type: categorical
-                categories:
-                    - Romanticism
-                    - Impressionism
-                    - Gothic painting
-                    - Baroque
-                    - Renaissance
-                    - NaN
-        - filename:
-                type: string
-        - food_words:
-                type: list
-        - contains_food:
-                type: boolean
+        source: "data/paintings_with_food_mentions.csv"
+        columns:
+                painting_id:
+                        dtype: object
+                        original_name: "item"
+                        is_index: true
+                        value_type: 'wikidata_url'
+                title:
+                        dtype: object
+
+                creation_date:
+                        dtype: datetime64[ns]
+                        value_type: 'year'
+
+                filename:
+                        dtype: object
+                food_words:
+                        dtype: object
+                contains_food:
+                        dtype: bool
 
 authors:
-    source: 'data/wikidata_authors.csv'
-    columns:
-        - author_wikidata:
-                type: string
-        - name:
-                type: string
-        - country:
-                type: string
-        - date_of_birth:
-                type: datetime
-        - gender:
-                type: categorical
-                categories:
-                    - Male
-                    - Female
-                    - NaN
+        source: "data/wikidata_authors.csv"
+        columns:
+                author_id:
+                        dtype: object
+                        original_name: 'author_wikidata'
+                        is_index: true
+                        value_type: 'wikidata_url'
+                author_name:
+                        dtype: object
+                        original_name: 'name'
+                author_country:
+                        dtype: object
+                        original_name: 'country'
+                        
+                date_of_birth:
+                        dtype: datetime64[ns]
+                        value_type: 'year'
 
+                gender:
+                        dtype: category
+                        categories:
+                                - male
+                                - female
+                                - NaN
 
 locations:
-    source: 'data/wikidata_locations.csv'
-    columns:
-        - location_wikidata:
-                type: string
-        - name:
-                type: string
-        - country:
-                type: categorical
-        - coordinates:
-                type: string
+        source: "data/wikidata_locations.csv"
+        columns:
+                location_id:
+                        dtype: object
+                        original_name: 'location_wikidata'
+                        is_index: true
+                        value_type: 'wikidata_url'
+                location_name:
+                        dtype: object
+                        original_name: 'name'
+                location_country:
+                        dtype: category
+                        original_name: 'country'
+                coordinates:
+                        dtype: object
