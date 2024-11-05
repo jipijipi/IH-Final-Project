@@ -45,7 +45,7 @@ authors:
                         original_name: 'author_wikidata'
                         is_index: true
                         value_type: 'wikidata_url'
-                author_name:
+                painter:
                         dtype: object
                         original_name: 'name'
                 author_country:
