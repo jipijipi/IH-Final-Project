@@ -1,0 +1,18 @@
+<View>
+  <Image name="image" value="$image"/>
+  <Choices name="labels" toName="image" choice="multiple">
+    <Choice value="Fruit"/>
+    <Choice value="Bread"/>
+    <Choice value="Cookware"/>
+    <Choice value="Seafood"/>
+    <Choice value="Wine"/>
+    <Choice value="Meal"/>
+    <Choice value="Cheese"/>
+    <Choice value="Meat"/>
+    <Choice value="Food"/>
+    <Choice value="Beverage"/>
+    <Choice value="Dairy"/>
+    <Choice value="Vegetable"/>
+    <Choice value="Dessert"/>
+  </Choices>
+</View>
