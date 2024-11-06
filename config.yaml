@@ -28,10 +28,19 @@ paintings:
                         dtype: datetime64[ns]
                         value_type: 'year'
 
+                title:
+                        dtype: object
+
+                image_url:
+                        dtype: object
+
+                time_period:
+                        dtype: object
+
 
 
 authors:
-        source: "data/wikidata_painters.csv"
+        source: "data/wikidata_all_painters.csv"
         columns:
                 author_id:
                         dtype: object
@@ -49,12 +58,11 @@ authors:
                         dtype: datetime64[ns]
                         value_type: 'year'
 
-                gender:
+                author_gender:
                         dtype: category
-                        categories:
-                                - male
-                                - female
-                                - NaN
+                        original_name: 'gender_label'
+
+
 
 locations:
         source: "data/wikidata_all_locations.csv"
