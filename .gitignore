@@ -166,3 +166,4 @@ data/*
 img/*
 .pth
 .twb
+best_food_detector.pth
