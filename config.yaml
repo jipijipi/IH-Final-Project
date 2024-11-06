@@ -1,5 +1,5 @@
 ids:
-        source: "data/wikidata_paintings_ids_final.csv"
+        source: "data/wikidata_paintings_ids_final_2.csv"
         columns:
                 painting_id:
                         dtype: object
@@ -16,29 +16,22 @@ ids:
                         value_type: 'wikidata_url'
 
 paintings:
-        source: "data/paintings_with_food_mentions.csv"
+        source: "data/wikidata_all_paintings.csv"
         columns:
                 painting_id:
                         dtype: object
                         original_name: "item"
                         is_index: true
                         value_type: 'wikidata_url'
-                title:
-                        dtype: object
 
                 creation_date:
                         dtype: datetime64[ns]
                         value_type: 'year'
 
-                filename:
-                        dtype: object
-                food_words:
-                        dtype: object
-                contains_food:
-                        dtype: bool
+
 
 authors:
-        source: "data/wikidata_authors.csv"
+        source: "data/wikidata_painters.csv"
         columns:
                 author_id:
                         dtype: object
@@ -47,10 +40,10 @@ authors:
                         value_type: 'wikidata_url'
                 painter:
                         dtype: object
-                        original_name: 'name'
+                        original_name: 'author_name'
                 author_country:
                         dtype: object
-                        original_name: 'country'
+                        original_name: 'country_label'
                         
                 date_of_birth:
                         dtype: datetime64[ns]
@@ -64,7 +57,7 @@ authors:
                                 - NaN
 
 locations:
-        source: "data/wikidata_locations.csv"
+        source: "data/wikidata_all_locations.csv"
         columns:
                 location_id:
                         dtype: object
@@ -73,9 +66,58 @@ locations:
                         value_type: 'wikidata_url'
                 location_name:
                         dtype: object
-                        original_name: 'name'
+                        original_name: 'museum_name'
                 location_country:
                         dtype: category
-                        original_name: 'country'
+                        original_name: 'country_label'
                 coordinates:
                         dtype: object
+food_words:
+        source: "data/paintings_with_food_nlp.csv"
+        columns:
+                painting_id:
+                        dtype: object
+                        original_name: 'item'
+                        is_index: true
+                        value_type: 'wikidata_url'
+                image_path:
+                        dtype: object
+                        original_name: 'image_path'
+                fruit:
+                        dtype: int64
+                bread:
+                        dtype: int64
+                cookware:
+                        dtype: int64
+                seafood:
+                        dtype: int64
+                wine:
+                        dtype: int64
+                meal:
+                        dtype: int64
+                cheese:
+                        dtype: int64
+                meat:
+                        dtype: int64
+                food:
+                        dtype: int64
+                beverage:
+                        dtype: int64
+                dairy:
+                        dtype: int64
+                vegetable:
+                        dtype: int64
+                dessert:
+                        dtype: int64
+
+food_found:
+        source: "data/paintings_with_food_cv.csv"
+        columns:
+                painting_id:
+                        dtype: object
+                        original_name: 'item'
+                        is_index: true
+                        value_type: 'wikidata_url'
+                predictions:
+                        dtype: object
+                
