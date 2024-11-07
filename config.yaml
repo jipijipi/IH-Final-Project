@@ -76,7 +76,7 @@ locations:
                         dtype: object
                         original_name: 'museum_name'
                 location_country:
-                        dtype: category
+                        dtype: object
                         original_name: 'country_label'
                 coordinates:
                         dtype: object
