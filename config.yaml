@@ -25,7 +25,7 @@ paintings:
                         value_type: 'wikidata_url'
 
                 creation_date:
-                        dtype: datetime64[ns]
+                        dtype: object
                         value_type: 'year'
 
                 title:
@@ -55,7 +55,7 @@ authors:
                         original_name: 'country_label'
                         
                 date_of_birth:
-                        dtype: datetime64[ns]
+                        dtype: object
                         value_type: 'year'
 
                 author_gender:
