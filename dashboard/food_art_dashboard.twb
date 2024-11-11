@@ -4649,8 +4649,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='1150' minheight='1150' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='71' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='84000' id='70' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
+            <zone h='100000' id='73' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='72' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone h='6771' id='22' mode='dropdown' name='Food Ratio by artwork location' param='[federated.1oeacu81vuhl591fvzulq1mygpw5].[none:location_country:nk]' type-v2='filter' w='11713' x='87701' y='1042'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -4776,8 +4776,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='60' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='84000' id='59' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
+            <zone h='100000' id='62' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='61' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='97916' id='3' is-fixed='true' name='Food Ratio by artist nationality' w='43558' x='586' y='1042'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />

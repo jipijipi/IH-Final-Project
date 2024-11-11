@@ -1,35 +1,109 @@
-
 # Food in Art
+
+A data analysis project exploring the representation of food in historical artwork using machine learning and natural language processing techniques.
 
 ## Project Overview
 
-The **Food in Art** project is an exploration of how food appears in artworks throughout different periods and its potential correlations with socio-economic factors like GDP and population. Using data processing and visualization tools, the project analyzes patterns and correlations between the depiction of food and historical context.
+This project analyzes a dataset of historical paintings to identify and study the presence of food-related elements across different time periods, cultures, and artistic movements. The analysis combines multiple approaches:
 
-## Objectives
-
-- Identify and analyze artworks that contain food elements using various datasets.
-- Explore correlations between the prevalence of food-related artworks and socio-economic indicators.
-- Create visualizations to highlight key trends and relationships across different historical periods.
-
-## Key Features
-
-- **Data Loading and Processing**: Configurable dataset loading through YAML configuration, with data cleaning functions to handle datetime, categorical, and Wikidata URL extraction.
-- **Dataset Merging**: Combining multiple datasets, including artwork metadata, locations, authors, and food-related data, to form a comprehensive analysis dataset.
-- **Correlation Analysis**: Statistical analysis to explore correlations between food depiction and normalized socio-economic data (e.g., GDP per capita).
-- **Data Normalization**: Using MinMaxScaler to normalize GDP and population data for comparative analysis.
+- Natural Language Processing (NLP) for analyzing artwork descriptions
+- Computer Vision (CV) using ResNet for image analysis
+- Historical economic data correlation analysis
 
 ## Data Sources
 
-- **Artwork Data**: Includes metadata such as painting titles, authors, creation dates, and locations.
-- **Food Data**: Contains information about food detected in artworks through word associations and image analysis.
-- **Socio-Economic Data**: GDP and population data per decade.
+The project uses the following data sources:
+- Wikidata for artwork metadata and images
+- Maddison Project Database for historical GDP data
+- FastText word embeddings for semantic analysis
 
-## How to Use
+## Supports
 
-1. **Configuration**: Modify the `config.yaml` file to specify dataset paths and column configurations.
-2. **Data Loading**: Load and process datasets using the provided functions.
-3. **Data Analysis**: Use the merged dataset to perform statistical analyses and generate visualizations.
-4. **Export**: Export processed data for further analysis or machine learning applications.
+- Presentation : <https://docs.google.com/presentation/d/1SkXSkEsFx-UF1SlxWeZggwzRyLwRhucVGF-nAMn8vyk/edit#slide=id.p1>
+- Dashboard : <https://public.tableau.com/app/profile/jpl.lft/viz/FoodinArt/FoodArt>
+
+## Project Structure
+
+```
+project/
+│
+├── data/                    # Data files and checkpoints
+│   ├── checkpoints/        # Temporary processing checkpoints
+│   ├── paintings_ids.csv   # Core artwork identifiers
+│   └── gdp_pop_decades.csv # Economic indicators
+│
+├── img/                    # Downloaded artwork images
+│   └── img_512/           # 512px thumbnails
+│
+├── labels/                 # ML training labels
+│   └── food_related_keywords.csv
+│
+├── models/                 # Trained ML models
+│   └── best_model_res.pth # Best performing ResNet model
+│
+└── notebooks/             # Analysis notebooks
+    ├── 1_initial_fetch.ipynb
+    ├── 2_NLP_labelling.ipynb
+    ├── 3_wikimedia_img_downloader.ipynb
+    ├── 4_NLP_classification.ipynb
+    ├── 5_CV_resnet.ipynb
+    ├── 6_food_detection_resnet.ipynb
+    └── 7_main.ipynb
+```
 
 
+## Usage
+
+1. **Data Collection**:
+   ```bash
+   python 1_initial_fetch.ipynb
+   ```
+   Fetches initial artwork data from Wikidata.
+
+2. **Image Download**:
+   ```bash
+   python 3_wikimedia_img_downloader.ipynb
+   ```
+   Downloads artwork images from Wikimedia Commons.
+
+3. **NLP Analysis**:
+   ```bash
+   python 2_NLP_labelling.ipynb
+   python 4_NLP_classification.ipynb
+   ```
+   Performs food-related keyword analysis and classification.
+
+4. **Computer Vision Analysis**:
+   ```bash
+   python 5_CV_resnet.ipynb
+   python 6_food_detection_resnet.ipynb
+   ```
+   Trains and applies ResNet model for food detection in images.
+
+5. **Final Analysis**:
+   ```bash
+   python 7_main.ipynb
+   ```
+   Combines all analyses and generates final results.
+
+## Model Information
+
+### ResNet Model
+- Architecture: ResNet18
+- Input size: 224x224 pixels
+- Output: 13 food-related categories
+- Training data: ~3000 manually labeled images
+
+### NLP Model
+- Based on FastText word embeddings
+- Vocabulary: ~3000 art-related terms
+- Food-related categories: 13 main categories
+
+## Configuration
+
+The project uses a YAML configuration file (`config.yaml`) for managing data processing parameters:
+- Data source paths
+- Column mappings
+- Data type specifications
+- Processing parameters
 
