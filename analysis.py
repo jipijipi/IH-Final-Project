@@ -33,6 +33,10 @@ def clean_datetime(series: pd.Series, value_type) -> pd.Series:
         return pd.to_numeric(series.dt.year, downcast='integer', errors='coerce')
     return series
 
+def clean_date_year(series: pd.Series) -> pd.Series:
+    return series.apply(extract_year)
+
+
 def clean_categorical(series: pd.Series, categories = None) -> pd.Series:
     """Convert series to categorical format with optional categories."""
     if categories:
@@ -42,7 +46,7 @@ def clean_categorical(series: pd.Series, categories = None) -> pd.Series:
 
 def extract_wikidata_id(series: pd.Series) -> pd.Series:
     """Extract the Wikidata ID from a series of URLs."""
-    return series.str.extract(r'(Q\d+)', expand=False)
+    return series.str.extract(r'(Q\d+)', expand=False).replace({pd.NA: 'unknown', np.nan: 'unknown', 'NaN': 'unknown', 'NULL': 'unknown', '': 'unknown'})
 
 
 
@@ -58,8 +62,13 @@ def process_column(series: pd.Series, dtype: str, value_type: str = None, catego
     Returns:
         Processed column data
     """
+
+    
     if value_type == 'wikidata_url':
         return extract_wikidata_id(series)
+    
+    if value_type == 'year':
+        return clean_date_year(series)
     
     if dtype == 'datetime64[ns]':
         return clean_datetime(series, value_type)
@@ -87,6 +96,11 @@ def load_and_process_dataset(
     # Load data
     df = pd.read_csv(source_path)
     
+    # Replace missing values
+    df = df.replace({pd.NA: 'unknown', np.nan:  'unknown', 'NaN':  'unknown', 'NULL':  'unknown', '':  'unknown'})
+    #df = df.dropna(how='all')
+   
+    
     # Rename columns
     column_mappings = {
         config['original_name']: col_name
@@ -97,6 +111,8 @@ def load_and_process_dataset(
     
     # Select configured columns
     df = df[list(columns_config.keys())]
+    
+
     
     # Process each column
     for column, config in columns_config.items():
@@ -111,6 +127,7 @@ def load_and_process_dataset(
     for column, config in columns_config.items():
         if config.get('is_index', False):
             df = df.drop_duplicates(subset=column, keep='first')
+            df = df.dropna(subset=[column])
             #df = df.set_index(column)
     
     return df
