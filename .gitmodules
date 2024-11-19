@@ -1,0 +1,3 @@
+[submodule "API/art_api"]
+	path = API/art_api
+	url = https://github.com/jipijipi/art_api.git
